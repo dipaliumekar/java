@@ -1,22 +1,25 @@
 package src;
 
+
+
 class Employee{
-	protected String name, address, mail, mobile;
-	protected int id;
+		protected String name, address, mail, mobile;
+		protected int id;
+		
+public Employee(int id,String name,String address,String mail,String mobile)
+{
+	this.id=id;
+	this.name=name;
+	this.address=address;                          
+	this.mail=mail;
+	this.mobile=mobile;
 	
-	public Employee(int id, String name, String address, String mail, String mobile){
-		this.id = id;
-		this.name = name;
-		this.address = address;
-		this.mail = mail;
-		this.mobile = mobile;
-	}
+}
 }
 
-
 class Programmer extends Employee{
-	protected double basic_pay, da, hra, pf;
-	Programmer(int id, String name, String address, String mail, String mobile, double basic_pay){
+	  protected double basic_pay, da, hra, pf;
+	   Programmer(int id, String name, String address, String mail, String mobile, double basic_pay){
 		super(id, name, address, mail, mobile);
 		this.basic_pay = basic_pay;
 		this.da = basic_pay*0.1;
@@ -25,60 +28,95 @@ class Programmer extends Employee{
 	}
 	void generatePaySlip() {
 		System.out.println("Programmer's Salary Slip: ");
+		System.out.println("ID :"+id);
+		System.out.println("Name :"+name);
+		System.out.println("Address:"+address);
+		System.out.println("Mail ID :"+mail);
+		System.out.println("Mobile Number:"+mobile);
+		System.out.println("Basic pay :"+basic_pay);
 		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
 		System.out.println("Net Salary: "+(basic_pay+da+hra));
 	}
+	
+}
+class TeamLead extends Employee{
+	 protected double basic_pay, da, hra, pf;
+	  TeamLead(int id, String name, String address, String mail, String mobile, double basic_pay){
+		super(id, name, address, mail, mobile);
+		this.basic_pay = basic_pay;
+		this.da = basic_pay*0.1;
+		this.hra = basic_pay*0.12;
+		this.pf = basic_pay*0.001;
+	}
+	void generatePaySlip() {
+		System.out.println("Team lead's Salary Slip: ");
+		System.out.println("ID :"+id);
+		System.out.println("Name :"+name);
+		System.out.println("Address:"+address);
+		System.out.println("Mail ID :"+mail);
+		System.out.println("Mobile Number:"+mobile);
+		System.out.println("Basic pay :"+basic_pay);
+		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
+		System.out.println("Net Salary: "+(basic_pay+da+hra));
+	}
+}
+class AssistantManager extends Employee{
+	   protected double basic_pay, da, hra, pf;
+	   AssistantManager(int id, String name, String address, String mail, String mobile, double basic_pay){
+		super(id, name, address, mail, mobile);
+		this.basic_pay = basic_pay;
+		this.da = basic_pay*0.1;
+		this.hra = basic_pay*0.12;
+		this.pf = basic_pay*0.001;
+	}
+	void generatePaySlip() {
+		System.out.println("assistant project manager's Salary Slip: ");
+		System.out.println("ID :"+id);
+		System.out.println("Name :"+name);
+		System.out.println("Address:"+address);
+		System.out.println("Mail ID :"+mail);
+		System.out.println("Mobile Number:"+mobile);
+		System.out.println("Basic pay :"+basic_pay);
+		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
+		System.out.println("Net Salary: "+(basic_pay+da+hra));
+	}
+}
+class ProjectManager extends Employee{
+	 protected double basic_pay, da, hra, pf;
+	 ProjectManager(int id, String name, String address, String mail, String mobile, double basic_pay){
+		super(id, name, address, mail, mobile);
+		this.basic_pay = basic_pay;
+		this.da = basic_pay*0.1;
+		this.hra = basic_pay*0.12;
+		this.pf = basic_pay*0.001;
+	}
+	void generatePaySlip() {
+		System.out.println("project manager's Salary Slip: ");
+		System.out.println("ID :"+id);
+		System.out.println("Name :"+name);
+		System.out.println("Address:"+address);
+		System.out.println("Mail ID :"+mail);
+		System.out.println("Mobile Number:"+mobile);
+		System.out.println("Basic pay :"+basic_pay);
+		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
+		System.out.println("Net Salary: "+(basic_pay+da+hra));
+	}
+	
 }
 
-class AssistantProfessor extends Employee{
-	protected double basic_pay, da, hra, pf;
-	AssistantProfessor(int id, String name, String address, String mail, String mobile, double basic_pay){
-		super(id, name, address, mail, mobile);
-		this.basic_pay = basic_pay;
-		this.da = basic_pay*0.1;
-		this.hra = basic_pay*0.12;
-		this.pf = basic_pay*0.001;
-	}
-	void generatePaySlip() {
-		System.out.println("Assistant Professor's Salary Slip: ");
-		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
-		System.out.println("Net Salary: "+(basic_pay+da+hra));
-	}
-}
-class AssociateProfessor extends Employee{
-	protected double basic_pay, da, hra, pf;
-	AssociateProfessor(int id, String name, String address, String mail, String mobile, double basic_pay){
-		super(id, name, address, mail, mobile);
-		this.basic_pay = basic_pay;
-		this.da = basic_pay*0.1;
-		this.hra = basic_pay*0.12;
-		this.pf = basic_pay*0.001;
-	}
-	void generatePaySlip() {
-		System.out.println("Associate Professor's Salary Slip: ");
-		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
-		System.out.println("Net Salary: "+(basic_pay+da+hra));
-	}
-}
-class Professor extends Employee{
-	protected double basic_pay, da, hra, pf;
-	Professor(int id, String name, String address, String mail, String mobile, double basic_pay){
-		super(id, name, address, mail, mobile);
-		this.basic_pay = basic_pay;
-		this.da = basic_pay*0.1;
-		this.hra = basic_pay*0.12;
-		this.pf = basic_pay*0.001;
-	}
-	void generatePaySlip() {
-		System.out.println("Professor's Salary Slip: ");
-		System.out.println("Gross Salary: "+(basic_pay+da+hra+pf));
-		System.out.println("Net Salary: "+(basic_pay+da+hra));
-	}
-}
+public class Salary {
 
-public class EmployeeSalary {
 	public static void main(String[] args) {
-		Programmer prog = new Programmer(12, "Prathamesh", "Akurdi, Pune", "m2papatil@gmail.com", "7798410704", 100000);
-		prog.generatePaySlip();
+		// TODO Auto-generated method stub
+        Programmer programmer =new Programmer(123,"Dipali","Sector-26,Pune","dipali@gmail.com","12345678",50000);
+        programmer.generatePaySlip();
+        TeamLead teamLead =new TeamLead(155,"Bhagyashri","Sector-25,Pune","abc@gmail.com","12376538",100000);
+        teamLead.generatePaySlip();
+        AssistantManager assistantManager =new  AssistantManager(145,"Radhika","Nigdi,Pune","radha@gmail.com","1256328",150000);
+        assistantManager.generatePaySlip();
+        ProjectManager  projectManager =new ProjectManager(543,"Devika","nigdi,pradhikaran,Pune","devika@gmail.com","1453978",200000);
+        projectManager.generatePaySlip();
+        
 	}
+
 }
