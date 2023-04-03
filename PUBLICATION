@@ -1,0 +1,149 @@
+import java.util.*;
+public class assign5 {
+
+	public static void main(String[] args) {
+	
+		//CREATE OBJECTS FOR SCANNING INPUTS OG BOOK AND MAGAZINE
+		Scanner in = new Scanner(System.in);
+		Book b=new Book();
+		Magazine m=new Magazine();
+		
+		int ch;
+		do {
+			/*System.out.printf("%n******MENU******%n");
+			System.out.printf("1. BOOK\n");
+			System.out.printf("2. MAGAZINE\n");
+			System.out.printf("1. AMOUNT OF COPIES\n");
+			System.out.printf("2. TOTAL SALE OF PUBLICATION\n");*/
+			System.out.printf("ENTER THE CHOICE: ");
+			ch=in.nextInt();
+			switch (ch)
+			{
+			case 1:
+				System.out.printf(" ");
+				
+			case 2:
+				System.out.printf(" ");
+				
+			}
+		} while (ch!=0);
+			in.close();
+		}
+
+	
+
+}
+
+class Publication{
+	 private String title;
+	 private int price;
+	 private int copies;
+	 private int total;
+	 
+	  Scanner sc=new Scanner(System.in);
+	  
+	  public void settitle(String title){
+		  this.title=title;
+		  
+	  }
+	  
+	  public void setcopies(int copies)
+	  {
+		  this.copies=copies;
+	  }
+	  
+	  public String gettitle()
+	  {
+		  return title;
+	  }
+	  
+	  public int getcopies()
+	  {
+		  return copies;
+	  }
+	  
+	  public int getprice()
+	  {
+		  return price;
+	  }
+	  
+	  public int gettotal()
+	  {
+		 return total;
+	  }
+	  
+	  void read_pub1()
+	  {
+		    System.out.print("ENTER THE TITLE OF BOOK OR MAGAZINE: ");
+			title=sc.next();
+			System.out.print("ENTER THE PRICE OF THE BOOK OR MAGAZINE: ");
+			price=sc.nextInt();
+			System.out.print("ENTER THE COPIES YOU WANT TO SALE OR ORDER: ");
+			copies=sc.nextInt();
+	  }
+	void display()
+	{
+		System.out.print(title+ "\t" +price+"\t"+copies);
+	}
+	
+	void salesCopy(int num)
+	//to generate the sale
+	{
+		if(num <= copies)
+		{
+			copies=copies-num;
+			total=total+num*price;
+			System.out.println("YOU HAVE PURCHASED "+num,"\nAMOUNT YOU HAV4E TO PAY "+(price*num));
+		}
+	}
+}
+// book class 
+class Book extends Publication{
+	//CLASS BOOK INHERITED FROM PUBLICATION 
+	String author;
+	void ordercopies(int num) {
+	int a=getcopies()+num;
+	setcopies(getcopies()+num);
+	System.out.println("\nYOUR ORDER IS ACCEPTED!!!!!!!! ");
+	}
+	
+	void read_book()
+	{
+		read_pub1();
+		System.out.println("ENTER THE NAME OF THE AUTHOR :"+author);
+		author=sc.next();
+		
+	}
+	
+	void displaybook()
+	{
+		System.out.println("TITLE \tPRICE \tCOPIES \tAUTHOR");
+		display();                                        //call to display defined in publication class
+		System.out.println("\t"+author);
+	}
+	
+	
+	
+	
+	
+}
+// magazine class
+class Magazine extends Publication{
+	//CLASS MAGAZINE INHERITED FROM PUBLICATION
+	 private int orderQty;
+	 private String current_issue_date;
+	 void receiveissue(String new_issue_date)  //for issue new or updated magazine
+	 {
+		System.out.println("ENTER THE ORDER QUANTITY: ") ;
+		orderQty=sc.nextInt();
+		
+		setcopies(orderQty); //set the copies ordered
+		
+		current_issue_date=new_issue_date;
+		System.out.println("");
+		
+	 }
+	 
+	
+	
+}
