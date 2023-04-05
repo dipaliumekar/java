@@ -8,31 +8,132 @@ public class assign5 {
 		Book b=new Book();
 		Magazine m=new Magazine();
 		
-		int ch;
+		int q;
 		do {
-			/*System.out.printf("%n******MENU******%n");
+			System.out.printf("%n******MENU******%n");
 			System.out.printf("1. BOOK\n");
 			System.out.printf("2. MAGAZINE\n");
-			System.out.printf("1. AMOUNT OF COPIES\n");
-			System.out.printf("2. TOTAL SALE OF PUBLICATION\n");*/
-			System.out.printf("ENTER THE CHOICE: ");
-			ch=in.nextInt();
-			switch (ch)
-			{
-			case 1:
-				System.out.printf(" ");
-				
-			case 2:
-				System.out.printf(" ");
+			System.out.printf("1. TOTAL SALE OF PUBLICATION\n");
+			System.out.printf("2. SALE OF PUBLICATION \n");
+			System.out.println("ENTER THE CHOICE: ");
+			int ch=in.nextInt();
+			int p;
+			pp:
+			if(ch==1) {
+			do {
+				int c;
+				System.out.printf("%n******MENU  FOR BOOK******%n");
+				System.out.printf("1.READ\n");
+				System.out.printf("2.DISPLAY\n");
+				System.out.printf("1.COPIES SALE \n");
+				System.out.printf("2.COPIES ORDER \n");
+				System.out.printf("Enter choice ::");
+				c=in.nextInt();
+				switch(c) {
+			    case 1:
+				System.out.println("************");
+				b.read_book();
+				System.out.println("************");
+				break;
+			    case 2:
+			    	System.out.println("************");
+			    	b.display_book();
+			    	System.out.println("************");
+			        break;
+			    case 3:
+			    	System.out.println("************");
+			    	System.out.print("COPIES U WANT ? : ");
+					int n1=in.nextInt();
+					b.salesCopy(n1);
+					System.out.println("************");
+					break;
+			    case 4:
+			    	System.out.println("************");
+			    	System.out.print("COPIES U ORDER ? : ");
+					int n2=in.nextInt();
+					b.ordercopies(n2);
+					break;
+				default:
+					System.out.println("Invalid");
 				
 			}
-		} while (ch!=0);
-			in.close();
+				System.out.println("Do you want to continue with book section[1/0]\n\t1.YES \t\t0.NO");
+				System.out.print("\tChoice::");
+				p=in.nextInt();
+				if(p==0)
+					break pp;
+		} while(p==1);
+			
 		}
+			else if(ch==2) {
+				
+			        rr:
+					do {
+						
+					   
+						int c;
+						System.out.printf("%n******MENU  FOR BOOK******%n");
+						System.out.printf("1.READ\n");
+						System.out.printf("2.DISPLAY\n");
+						System.out.printf("1.COPIES OF MAGAZINE SALE \n");
+						System.out.printf("2.RECEIVE NEW ISSUE \n");
+						System.out.printf("Enter choice ::");
+						c=in.nextInt();
+						switch(c) {
+					    case 1:
+						System.out.println("************");
+						m.read_magazine();
+						System.out.println("************");
+						break;
+					    case 2:
+					    	System.out.println("************");
+					    	m.display_magazine();
+					    	System.out.println("************");
+					        break;
+					    case 3:
+					    	System.out.println("************");
+					    	System.out.println("COPIES U WANT?  ");
+							int n3=in.nextInt();
+							m.salesCopy(n3);
+							System.out.println("************");
+							break;
+					    case 4:
+					    	System.out.println("************");
+					    	System.out.println("ENTER NEW ISSUE DATE [dd/mm/yyyy]: ");
+							String date=in.next();
+							m.receiveissue(date);
+							break;
+						default:
+							System.out.println("Invalid");
+						
+					}
+						System.out.println("Do you want to continue with book section[1/0]\n\t1.YES \t\t0.NO");
+						System.out.print("\tChoice::");
+						p=in.nextInt();
+						if(p==0)
+							break rr ;
+				} while(p==1);
+			        
+			}
+			else if(ch==3)
+			{
+				System.out.println("\n\tTOTAL SALE AMOUNT IS(paid by customer)  = "+(b.gettotal()+m.gettotal())+ "  ");
+			}
+			else if(ch==4)
+			{
+				System.out.println("\n\tSALE OF PUBLICATION IS  :  "+ (b.getcopies()*b.getprice() + m.getcopies()*m.getprice()));
+			}
+			else
+				System.out.println("invalid key....");
+			    System.out.println("DO YOU WANT TO CONTINUE WITH PUBLICATION???\n\t1.CONTINUE \t0.TERMINATE");
+			    q=in.nextInt();
+		}while(q!=0);
+		in.close();
+		}
+	}
 
-	
 
-}
+		
 
 class Publication{
 	 private String title;
@@ -93,7 +194,7 @@ class Publication{
 		{
 			copies=copies-num;
 			total=total+num*price;
-			System.out.println("YOU HAVE PURCHASED "+num,"\nAMOUNT YOU HAV4E TO PAY "+(price*num));
+			System.out.printf("YOU HAVE PURCHASED "+num,"\nAMOUNT YOU HAV4E TO PAY "+(price*num));
 		}
 	}
 }
@@ -115,7 +216,7 @@ class Book extends Publication{
 		
 	}
 	
-	void displaybook()
+	void display_book()
 	{
 		System.out.println("TITLE \tPRICE \tCOPIES \tAUTHOR");
 		display();                                        //call to display defined in publication class
@@ -133,17 +234,31 @@ class Magazine extends Publication{
 	 private int orderQty;
 	 private String current_issue_date;
 	 void receiveissue(String new_issue_date)  //for issue new or updated magazine
-	 {
+	 { //method to issue new or upgraded magazine 
 		System.out.println("ENTER THE ORDER QUANTITY: ") ;
 		orderQty=sc.nextInt();
 		
 		setcopies(orderQty); //set the copies ordered
 		
 		current_issue_date=new_issue_date;
-		System.out.println("");
+		System.out.printf("\tmagazine"+gettitle(),"\twith issue date "+current_issue_date,"\tis available");
+		
 		
 	 }
+	 void read_magazine()
+	 {
+		 read_pub1();
+		 System.out.println("Enter the current issue date[dd/mm/yy]");
+		 current_issue_date=sc.next(); 
+		 
+	 }
 	 
-	
+	 void display_magazine()
+	 {
+		 System.out.println("title\t price\t copies\t price");
+		 display();
+		 System.out.printf("Issue date",current_issue_date);
+	 }
+
 	
 }
