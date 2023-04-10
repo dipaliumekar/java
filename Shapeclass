@@ -1,0 +1,60 @@
+import java.util.Scanner;
+//import java.lang.Math;
+
+public class Shapeclass {
+	public static void main(String[] args) {
+	int y;
+	Scanner in=new Scanner(System.in);
+	shape S;
+	rectangle R=new rectangle();
+	triangle T=new triangle();
+	do
+	{
+	System.out.println("Enter the shape whose area is to be calculated:\n1.Reactangle\n2.Triangle");
+	int ch=in.nextInt();
+	switch(ch){
+	case 1 : S=R;
+	S.compute_area();
+	break;
+	case 2 : S=T;
+	S.compute_area();
+	break;
+	default : System.out.println("Invalid Choice!!!!!!!!!!!!!");
+	}
+	System.out.println("Do you wish to continue(0/1) : ");
+	y = in.nextInt();
+	}while(y==1);
+	}
+}
+
+abstract class shape{
+	double length,breath;
+
+	abstract public void compute_area();
+	
+}
+
+class rectangle extends shape{
+	Scanner in=new Scanner(System.in);
+	public void compute_area()
+	{
+	System.out.println("Enter length  and breath :");
+	length=in.nextDouble();
+	breath=in.nextDouble();
+	System.out.println("The area of rectangle is :"+(length*breath));
+	}
+	
+	
+	
+}
+
+class triangle extends shape{
+	Scanner in=new Scanner(System.in);
+	public void compute_area()
+	{
+	System.out.println("Enter base and height: ");
+	length=in.nextDouble();
+	breath=in.nextDouble();
+	System.out.println("The area of triangle is :"+(0.5*length*breath));
+	}
+}
