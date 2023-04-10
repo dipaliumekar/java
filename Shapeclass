@@ -1,23 +1,22 @@
 import java.util.Scanner;
-//import java.lang.Math;
 
 public class Shapeclass {
 	public static void main(String[] args) {
 	int y;
 	Scanner in=new Scanner(System.in);
 	shape S;
-	rectangle R=new rectangle();
-	triangle T=new triangle();
+	rectangle R=new rectangle(); //create object of rectangle 
+	triangle T=new triangle(); //create object of triangle 
 	do
 	{
-	System.out.println("Enter the shape whose area is to be calculated:\n1.Reactangle\n2.Triangle");
+	System.out.println("Whose area you want to calculate?\n1.Reactangle\n2.Triangle");
 	int ch=in.nextInt();
 	switch(ch){
-	case 1 : S=R;
-	S.compute_area();
+	case 1 : S=R; // assign shape equal to rectangle 
+	S.compute_area(); //compute area of rectangle 
 	break;
-	case 2 : S=T;
-	S.compute_area();
+	case 2 : S=T; //assign shape  equal to triangle 
+	S.compute_area();  //compute area of triangle 
 	break;
 	default : System.out.println("Invalid Choice!!!!!!!!!!!!!");
 	}
@@ -26,19 +25,21 @@ public class Shapeclass {
 	}while(y==1);
 	}
 }
-
+//method overriding 
+//we use method overriding here to access only the necessary information
 abstract class shape{
 	double length,breath;
 
-	abstract public void compute_area();
+	abstract public void compute_area(); 
 	
 }
 
+//to calculate the area of the rectangle
 class rectangle extends shape{
-	Scanner in=new Scanner(System.in);
+	Scanner in=new Scanner(System.in); //scanning input 
 	public void compute_area()
 	{
-	System.out.println("Enter length  and breath :");
+	System.out.println("Enter length  and breath :"); //taking input length and breath from user 
 	length=in.nextDouble();
 	breath=in.nextDouble();
 	System.out.println("The area of rectangle is :"+(length*breath));
@@ -48,11 +49,12 @@ class rectangle extends shape{
 	
 }
 
+//to calculate the area of the triangle
 class triangle extends shape{
-	Scanner in=new Scanner(System.in);
+	Scanner in=new Scanner(System.in); //scanning input 
 	public void compute_area()
 	{
-	System.out.println("Enter base and height: ");
+	System.out.println("Enter base and height: ");  //taking input base and height from user
 	length=in.nextDouble();
 	breath=in.nextDouble();
 	System.out.println("The area of triangle is :"+(0.5*length*breath));
