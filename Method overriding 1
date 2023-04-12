@@ -1,6 +1,6 @@
 //Method overriding in java 
 //SYIT121_DIPALI_UMEKAR
-
+//you can not call the method of parent class using child class object bcuz u can't access the variables of child class in parent class
 
 import java.util.Scanner;
 //creating parent class 
