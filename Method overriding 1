@@ -1,0 +1,43 @@
+//Method overriding in java 
+//SYIT121_DIPALI_UMEKAR
+
+
+import java.util.Scanner;
+//creating parent class 
+class abc{
+	void print() {
+		System.out.println("This is the Parent class");
+	}
+}
+
+//creating child class which is inherited from parent class abc 
+class Child extends abc{
+	void print() {
+		System.out.println("This is the Child class");
+	}
+}
+
+public class Method{
+    public static void main(String args[]) {
+	abc a= new abc();
+	Child c = new Child();
+	Scanner in = new Scanner(System.in);
+	int ch,y;
+	
+	do {
+		System.out.println("Enter choice\n1.Parent\n2.Child\n");
+		ch = in.nextInt();
+		switch(ch) {
+		case 1 : 
+			a.print();
+		     break;
+		case 2 : 
+			c.print();
+		    break;
+		default : System.out.println("********Invalid choice*********");
+		}
+		System.out.println("Do you want to continue?(0/1) ");
+		y = in.nextInt();
+	}while(y==1);
+}
+}
