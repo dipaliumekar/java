@@ -1,111 +1,171 @@
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
 import java.util.Scanner;
-/*public class weather_report{
+
+public class Weather {
+
     public static void main(String[] args) {
-        float average,sum;
-        int days,count,n;
-        float l=0,h=0,a=0,arain=0;
-        Scanner s=new Scanner(System.in);
-         n=s.nextInt();
-        weather_report []w;
-        w=new weather_report[5];
-        
-        //w[0]= new weather_report();
-       
-        for( count=0;count<n;count++)
+
+        int n;
+
+        double day,high_temp,low_temp,amt_rain,amt_snow;
+
+        Scanner in = new Scanner(System.in);
+
+        WeatherReport[] arr = new WeatherReport[20];
+
+        WeatherReport obj = new WeatherReport();
+
+        System.out.println("Enter the number of days : ");
+
+        n = in.nextInt();
+
+        for(int i=0;i<n;i++)
+
         {
-         
-           w[count]=new weather_report();
-           w[count].get();
+
+            System.out.println("Enter the day number : ");
+
+            day = in.nextDouble();
+
+            System.out.println("Enter the high temperature : ");
+
+            high_temp = in.nextDouble();
+
+            System.out.println("Enter the low temperature : ");
+
+            low_temp = in.nextDouble();
+
+            System.out.println("Enter the amount of rain : ");
+
+            amt_rain = in.nextDouble();
+
+            System.out.println("Enter the amount of snow : ");
+
+            amt_snow = in.nextDouble();
+
+            arr[i] = new WeatherReport(day,high_temp,low_temp,amt_rain,amt_snow);
+
         }
-        for( count=0;count<n;count++)
-        {
-           
-           l = l+w[count].low_temp;
-           h=(h+w[count].high_temp);
-       
-           a=(a+w[count].amount_snow);
-           
-           arain=(arain+w[count].amount_rain);
-         
-        }
-     
-       System.out.println("\n avg of lowtemp:"+l/n);
-       System.out.println("\n avg of hightemp:"+h/n);
-       System.out.println("\n avg of amount_snow:"+a/n);
-       System.out.println("\n avg of amount_rain:"+arain/n);
+
+        obj.avgH(arr,n);
+
+        obj.avgL(arr,n);
+
+        obj.avgAr(arr,n);
+
+        obj.avgS(arr,n);
+
+        in.close();
+
     }
-   
+
 }
-*/
-public class weather_report()
-{
-    float high_temp,low_temp,amount_rain,amount_snow;
-    public weather_report()
-    {   days=0;
-        high_temp=0;
-        low_temp=0;
-        amount_rain=0;
-        amount_snow=0;
-    }
-    public weather_report(int a,float c1,float c2,float c3,float c4)
-    {   days=a;
-        high_temp=c1;
-        low_temp=c2;
-        amount_rain=c3;
-        amount_snow=c4;
-    }
-    public void get()
+
+class WeatherReport{
+
+    double d,ht,lt,ar,as;
+
+    WeatherReport()
+
     {
-    System.out.println("\nEnter the values for the particular day:");
-    Scanner s=new Scanner(System.in);
-    System.out.println("\nEnter the day:");
-    days=s.nextInt();
-    System.out.println("\nEnter the high temperature:");
-    high_temp=s.nextFloat();
-    System.out.println("\nEnter the low temperature:");
-    low_temp=s.nextFloat();
-    System.out.println("\nEnter the amount_rain:");
-    amount_rain=s.nextFloat();
-    System.out.println("\nEnter the amount_snow:");
-    amount_snow=s.nextFloat();
+
+        d=0;
+
+        ht=0;
+
+        lt=0;
+
+        ar=0;
+
+        as=0;
+
     }
-    public static void main(String[] args) {
-        float average,sum;
-        int days,count,n;
-        float l=0,h=0,a=0,arain=0;
-        Scanner s=new Scanner(System.in);
-         n=s.nextInt();
-        weather_report []w;
-        w=new weather_report[5];
-        
-        //w[0]= new weather_report();
-       
-        for( count=0;count<n;count++)
-        {
-         
-           w[count]=new weather_report();
-           w[count].get();
-        }
-        for( count=0;count<n;count++)
-        {
-           
-           l = l+w[count].low_temp;
-           h=(h+w[count].high_temp);
-       
-           a=(a+w[count].amount_snow);
-           
-           arain=(arain+w[count].amount_rain);
-         
-        }
-     
-       System.out.println("\n avg of lowtemp:"+l/n);
-       System.out.println("\n avg of hightemp:"+h/n);
-       System.out.println("\n avg of amount_snow:"+a/n);
-       System.out.println("\n avg of amount_rain:"+arain/n);
+
+    WeatherReport(double day,double high_temp,double low_temp,double amt_rain,double amt_snow)
+
+    {
+
+        d=day;
+
+        ht=high_temp;
+
+        lt=low_temp;
+
+        ar=amt_rain;
+
+        as=amt_snow;
+
     }
-   
+
+    public void avgH(WeatherReport[] arr,int n) {
+
+        double sum=0;
+
+        for(int i=0;i<n;i++)
+
+        {
+
+            sum=sum+arr[i].ht;
+
+        }
+
+        double avg = sum/n;
+
+        System.out.println("Average high temperature is : " + avg);
+
+    }
+
+    public void avgL(WeatherReport[] arr,int n) {
+
+        double sum=0;
+
+        for(int i=0;i<n;i++)
+
+        {
+
+            sum=sum+arr[i].lt;
+
+        }
+
+        double avg = sum/n;
+
+        System.out.println("Average low temperature is : " + avg);
+
+    }
+
+    public void avgAr(WeatherReport[] arr,int n) {
+
+        double sum=0;
+
+        for(int i=0;i<n;i++)
+
+        {
+
+            sum=sum+arr[i].ar;
+
+        }
+
+        double avg = sum/n;
+
+        System.out.println("Average amount rain is : " + avg);
+
+    }
+
+    public void avgS(WeatherReport[] arr,int n) {
+
+        double sum=0;
+
+        for(int i=0;i<n;i++)
+
+        {
+
+            sum=sum+arr[i].as;
+
+        }
+
+        double avg = sum/n;
+
+        System.out.println("Average amount snow is : " + avg);
+
+    }
+
 }
-
-
