@@ -1,0 +1,273 @@
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner in = new Scanner(System.in);
+        vehicle v=null;
+        int ch;
+        aa:
+        do {
+
+            System.out.println("Enter the choice\n1.Bicycle\n2.Bike\n3.Car\n4.Exit\n");
+            ch=in.nextInt();
+            if(ch==1)
+                v=new Bicycle();
+            else if(ch==2)
+                v=new Bike();
+            else if (ch==3)
+                v= new Car();
+            else if(ch==4)
+                break aa;
+            else
+                System.out.println("Invalid Choice!!!!!!!!!!!!!");
+
+            if(ch >0 && ch<4)
+            {
+                bb:
+                do {
+                    System.out.print(" \tChoice\n\t1. Speed Up \n\t2. Change gear \n\t3. Apply Brakes\n\t4. Display Vehicle Status \n\t5. change Vehicle /Exit \n");
+                    int z=in.nextInt();
+                    switch(z)
+                    {
+                        case 1:
+                            v.speed_up();
+                            System.out.println("======================================================================");
+                            break;
+                        case 2:
+                            System.out.print("which gear you want?   ");
+                            int a=in.nextInt();
+                            v.change_gear(a);
+                            System.out.println("======================================================================");
+                            break;
+
+                        case 3:
+                            v.apply_breaks();
+                            System.out.println("======================================================================");
+                            break;
+                        case 4:
+                            v.display();
+                            System.out.println("======================================================================");
+                            break;
+                        case 5:
+                            break bb;
+                        default:
+                            System.out.println("Invalid Input!!!!!!!!!!!");
+
+                    }
+                }while(true);
+            }
+
+
+
+        }while(ch!=4); //loop break when input y=4
+    }
+
+}
+
+
+
+
+
+
+
+
+
+interface vehicle{
+    void change_gear(int a);
+    void speed_up();
+    void apply_breaks();
+    void display();
+}
+
+
+class Bicycle implements vehicle{
+    int gear;
+    int speed;
+    Bicycle()
+    {
+        System.out.println("Bicycle started\n");
+        gear=1;
+        speed=10;
+    }
+    public void change_gear(int gearx){
+        if(gearx<7 && gearx>0 )
+        {
+            gear=gearx;
+            System.out.println("Current gear of the bicycle is:\n"+gear);
+        }
+        else {
+            System.out.println("Gear is out of the range!!!!!");
+        }
+    }
+    public void speed_up()
+    {
+        if((speed+5)<50 ) {
+            speed+=5;
+            System.out.println("\n\tBicycles  increased current speed is: "+speed);
+        }
+        else
+            System.out.println("Bicycle's speed can not be increased !!!!!!!!!!!!!!!!!!!!");
+    }
+
+    public void apply_breaks()
+    {
+        Scanner in=new Scanner(System.in);
+        int x;
+        System.out.println("1.decrease speed\n2.stop bicycle\n");
+        x=in.nextInt();
+
+        if(x==1)
+            if((speed-5)>0)
+            {
+                speed-=5;
+                System.out.println("Speed is reduced and current speed of Bicycle  is : "+speed+" Kmhr \n");
+            }
+            else {
+                speed=0;
+                gear=0;
+                System.out.println("Bicycle has been stopped \n ");}
+
+        if(x==2)
+        {
+            speed=0;
+            gear=0;
+            System.out.println("Bicycle has been stopped \n ");
+        }
+
+    }
+
+    public void display()
+    {
+        System.out.println("Speed of Bicycle is  "+speed +" Kmhr and gear is "+gear);
+    }
+}
+
+
+
+
+class Bike implements vehicle{
+    int gear;
+    int speed;
+    Bike(){
+        System.out.println("Bike started\n");
+        gear= 1;
+        speed=10 ;
+    }
+    public void change_gear(int gearx)
+    {
+        if(gearx<6 && gear>0)
+        {
+            gear=gearx;
+            System.out.println("\nCurrent gear of Bike is:"+gear);
+        }
+        else {
+            System.out.println("Gear is out of the range!!!!!");
+        }
+    }
+    public void speed_up()
+    {
+        if((speed+20)<100 ) {
+            speed+=20;
+            System.out.println("\n\tBike's  increased current speed is: "+speed);
+        }
+        else
+            System.out.println("Bike's speed can not be increased !!!!!!!!!!!!!!!!!!!!");
+    }
+
+    public void apply_breaks()
+    {
+        Scanner in=new Scanner(System.in);
+        int p;
+        System.out.println("1. decrease speed\n2. stop bike\n");
+        p=in.nextInt();
+
+        if(p==1)
+            if((speed-20)>0)
+            {
+                speed-=20;
+                System.out.println("Speed is reduced and current speed of Bike is : "+speed+" Kmhr \n");
+            }
+            else {
+                speed=0;
+                gear=0;
+                System.out.println("Bike has been stopped \n ");}
+
+        if(p==2)
+        {
+            speed=0;
+            gear=0;
+            System.out.println("Bike has been stopped \n ");
+        }
+
+    }
+
+    public void display()
+    {
+        System.out.println("Speed of Bike is  "+speed +" Kmhr and gear is "+gear);
+    }
+}
+
+
+
+class Car implements vehicle{
+    int gear;
+    int speed;
+    Car(){
+        System.out.println("Car started\n");
+        gear= 1;
+        speed=10 ;
+    }
+    public void change_gear(int gearx)
+    {
+        if(gearx<7 && gear>0)
+        {
+            gear=gearx;
+            System.out.println("\nCurrent gear of Car is:"+gear);
+        }
+        else {
+            System.out.println("Gear is out of the range!!!!!");
+        }
+    }
+    public void speed_up()
+    {
+        if((speed+20)<150 ) {
+            speed+=20;
+            System.out.println("\n\tCar's  increased current speed is: "+speed);
+        }
+        else
+            System.out.println("Car's speed can not be increased !!!!!!!!!!!!!!!!!!!!");
+    }
+
+    public void apply_breaks()
+    {
+        Scanner in=new Scanner(System.in);
+        int q;
+        System.out.println("1. decrease speed\n2. stop car\n");
+        q=in.nextInt();
+
+        if(q==1)
+            if((speed-20)>0)
+            {
+                speed-=20;
+                System.out.println("Speed is reduced and current speed of Car is : "+speed+" Kmhr \n");
+            }
+            else {
+                speed=0;
+                gear=0;
+                System.out.println("Car has been stopped \n ");}
+
+        if(q==2)
+        {
+            speed=0;
+            gear=0;
+            System.out.println("Car has been stopped \n ");
+        }
+
+    }
+
+    public void display()
+    {
+        System.out.println("Speed of Car is  "+speed +" Kmhr and gear is "+gear);
+    }
+}
