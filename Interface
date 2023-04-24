@@ -60,7 +60,7 @@ public class Main {
 
 
 
-        }while(ch!=4); //loop break when input y=4
+        }while(ch!=4); 
     }
 
 }
