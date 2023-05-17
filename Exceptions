@@ -1,0 +1,39 @@
+//import java.io.*;
+//import java.lang.Exception;
+import java.util.*;
+
+
+public class Mymain {
+
+	public static void main(String[] args) {
+		int num1,num2;
+		Scanner sc= new Scanner(System.in);
+		try {
+			System.out.println("Enter the first number:\n");
+			num1=sc.nextInt();
+			System.out.println("Enter the second number:\n");
+			num2=sc.nextInt();
+			int q= num1/num2;
+			System.out.println("Quotient is:\n"+q);
+			int ar[]= {1,2,3,4,5};
+			for(int i=0;i<=ar.length;i++)
+			{
+				System.out.println(ar[i]+"");
+			}
+		}
+		catch(InputMismatchException e){
+			System.out.println("You have Entered Wrong Input");
+			
+		}
+		catch(ArithmeticException e){
+			System.out.println("Hello ,its "+e);
+			
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("out of bound ");
+			
+		}
+
+	}
+
+}
